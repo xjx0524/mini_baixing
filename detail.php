@@ -22,11 +22,9 @@ require_once('DAO.php');
 			//页面索引
 			foreach($detailArray as $key=> $value)
 			{
-				echo "<li>$key:
-					  <br>
-						$value				
-					  </li>" ;		
-
+                if (is_numeric($key)) continue;
+                if($key != 'id')
+                    echo "<li>$key : $value</li>" ;
 			}
 
 			echo "</ul>";

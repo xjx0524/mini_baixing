@@ -15,14 +15,20 @@ include("head.php");
 					<?php
                     $dao = new DAO();
                     $arr = $dao->getCategory();
-					     $numInRow = 1;//每行多少个数据。
-						foreach($arr as $eglishName =>$category)
-							{$numInRow ++;
-						   if($numInRow % 10 ==1)
-						   	echo "<br>";
-						   else
-						  	echo "<a href='fabu_action.php?englishname=$eglishName' target='_blank' class='selected'>$category </a>";
-						}
+					     $numInRow = 0;//每行多少个数据。
+                    foreach($arr as $eglishName =>$category)
+                    {
+
+                        if($numInRow%8 == 0)
+                        {
+                            echo "<tr>";
+                        }
+                        $numInRow ++;
+
+                        echo "<td width ='150px'><a href='fabu_action.php?englishname=$eglishName' target='_blank' class='selected'>$category </a></td> ";
+                        if($numInRow % 8 ==0)
+                            echo "</tr> \n";
+                    }
 					?>
 				</td>
 			</tr>
